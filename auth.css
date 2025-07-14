@@ -1,0 +1,119 @@
+body {
+  background-color: #1e1e1e;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.auth-container {
+  background-color: rgba(44, 44, 44, 0.75); /* Semi-transparent */
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(5px); /* flou d’arrière-plan */
+  transition: all 0.3s ease-in-out;
+}
+
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.2rem;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.tabs button.active {
+  color: white;
+  border-bottom: 2px solid #db524d;
+}
+.form {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.form.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.form input {
+  width: 100%;
+  padding: 12px 45px 12px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  background-color: #3a3a3a;
+  color: white;
+}
+
+.form input::placeholder {
+  color: #aaaaaa;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: white;
+}
+
+.form button {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #db524d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #e6605a;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}

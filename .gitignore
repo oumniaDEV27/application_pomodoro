@@ -1,0 +1,17 @@
+# Node.js
+node_modules/
+dist/
+*.log
+.env
+.DS_Store
+
+# Build files
+build/
+out/
+
+# Electron
+*.asar
+*.exe
+
+# OS files
+Thumbs.db

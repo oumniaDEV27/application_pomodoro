@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tableau de bord</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Bienvenue sur Pomodoro App</h1>
+
+    <div class="buttons">
+      <button onclick="location.href='index.html'">🎯 Lancer une session Pomodoro</button>
+      <button onclick="openHistory()">📈 Voir l'historique</button>
+      <button id="logout">🔓 Déconnexion</button>
+    </div>
+  </div>
+
+  <!-- Supabase SDK -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm"></script>
+  <script type="module" src="supabase.js"></script>
+  <script type="module">
+    import { supabase } from './supabase.js';
+
+    // Redirige vers login si non connecté
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      window.location.href = 'auth.html';
+    }
+
+    // Déconnexion
+    const logoutBtn = document.getElementById('logout');
+    logoutBtn?.addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      window.location.href = 'auth.html';
+    });
+
+    // Historique
+    window.openHistory = function () {
+      if (window.require) {
+        const { ipcRenderer } = window.require('electron');
+        ipcRenderer.send('open-history-window');
+      } else {
+        alert("Electron n'est pas disponible.");
+      }
+    };
+  </script>
+</body>
+</html>

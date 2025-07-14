@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paramètres</title>
+  <style>
+    body {
+      background: #1e1e1e;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      background: #2c2c2c;
+      color: white;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      background-color: #db524d;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e6605a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Paramètres</h1>
+
+  <div class="section">
+    <h2>Son de notification</h2>
+    <label for="sound-select">Choisir une sonnerie :</label>
+    <select id="sound-select">
+      <option value="sounds/beach.mp3">Beach</option>
+      <option value="sounds/charlesL.mp3">CharlesL</option>
+      <option value="sounds/forest.mp3">Forest</option>
+      <option value="sounds/matthis.mp3">Matthis</option>
+      <option value="sounds/maxV.mp3">MaxV</option>
+      <option value="sounds/Spies.mp3">Spies</option>
+    </select>
+  </div>
+
+  <div class="section">
+    <h2>Fond d'écran</h2>
+    <label for="bg-select">Choisir un fond :</label>
+    <select id="bg-select">
+      <option value="">Fond noir (défaut)</option>
+      <option value="photos/beach.jpg">Beach</option>
+      <option value="photos/charlesL.jpg">CharlesL</option>
+      <option value="photos/forest.jpg">Forest</option>
+      <option value="photos/maxV.jpg">MaxV</option>
+      <option value="photos/montains.jpg">Montains</option>
+      <option value="photos/spies.JPG">Spies</option>
+      <option value="photos/sunset.jpg">Sunset</option>
+    </select>
+  </div>
+
+  <button id="save-settings">Enregistrer</button>
+
+  <script>
+    const soundSelect = document.getElementById('sound-select');
+    const bgSelect = document.getElementById('bg-select');
+    const saveBtn = document.getElementById('save-settings');
+
+    const saved = JSON.parse(localStorage.getItem('userSettings'));
+    if (saved?.sound) soundSelect.value = saved.sound;
+    if (saved?.background) bgSelect.value = saved.background;
+
+    saveBtn.addEventListener('click', () => {
+      const settings = {
+        sound: soundSelect.value,
+        background: bgSelect.value
+      };
+
+      localStorage.setItem('userSettings', JSON.stringify(settings));
+      alert("Paramètres enregistrés.");
+
+      const { ipcRenderer } = require('electron');
+      ipcRenderer.send('reload-main-window');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* === Général === */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1e1e1e;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  padding: 30px;
+
+  /* 🎯 Totalement transparent */
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 12px;
+
+  position: relative;
+}
+
+/* === Titre === */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 25px;
+}
+
+/* === Boutons de mode === */
+.mode-buttons {
+  margin-bottom: 25px;
+}
+
+.mode {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  margin: 0 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.mode:hover {
+  background-color: #555;
+}
+
+.mode.active {
+  background-color: #db524d;
+}
+
+/* === Timer === */
+#timer {
+  font-size: 5rem;
+  margin: 30px 0;
+  font-weight: bold;
+}
+
+/* === Contrôles === */
+.controls {
+  margin-bottom: 20px;
+}
+
+.controls button {
+  background-color: #db524d;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  margin: 0 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.controls button:hover {
+  background-color: #e6605a;
+  transform: scale(1.03);
+}
+
+/* === Bas de page === */
+.bottom-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.bottom-buttons button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bottom-buttons button:hover {
+  background-color: #777;
+}
+
+/* === Bouton engrenage Paramètres === */
+.settings-icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.settings-icon button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.settings-icon button:hover {
+  color: #db524d;
+}
+
+/* === Formulaire Pomodoro personnalisé === */
+#custom-settings {
+  margin-top: 30px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#custom-settings label {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+#custom-settings input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  font-size: 1rem;
+  width: 100%;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+#apply-custom {
+  background-color: #db524d;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#apply-custom:hover {
+  background-color: #e6605a;
+}
+
+/* === Animation === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+  #timer {
+    font-size: 3.5rem;
+  }
+
+  .controls button,
+  .bottom-buttons button {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+
+  .mode {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+}
